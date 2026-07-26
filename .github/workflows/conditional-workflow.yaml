@@ -48,8 +48,6 @@ jobs:
                 echo "This step runs  only on the   workflow dispatch events" 
                 echo " The input value for simulate_failure is: ${{ github.event.inputs.simulate_failure }}"
                 echo " The input value for target_branch is: ${{ github.event.inputs.target_branch }}"
-                echo " The current branch is: ${{ github.ref }}"
-                echo " The current branch is: ${{ github.ref_name }}"
                 echo " Manually triggered workflow : ${{ github.actor }}"
 
 
