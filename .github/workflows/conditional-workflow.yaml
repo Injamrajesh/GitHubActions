@@ -33,7 +33,27 @@ jobs:
             - name: Conditional Step run only on main branch
               if: github.ref == 'ref/heads/main'
               run: echo " This step runs  only on the   main branch"
+
+            - name: Only run on non-main branch
+              if: github.ref != 'ref/heads/main'
+              run: echo " This step runs  only on the   non-main branch" 
+
+            - name: Run only on Push Event
+              if: github.event_name == 'push'
+              run: echo " This step runs  only on the   push event"  
               
+            - name: Run only on work flow dispatch Event
+              if: github.event_name == 'workflow_dispatch'
+              run:  |
+                echo "This step runs  only on the   workflow dispatch events" 
+                echo " The input value for simulate_failure is: ${{ github.event.inputs.simulate_failure }}"
+                echo " The input value for target_branch is: ${{ github.event.inputs.target_branch }}"
+                echo " The current branch is: ${{ github.ref }}"
+                echo " The current branch is: ${{ github.ref_name }}"
+                echo " Manually triggered workflow : ${{ github.actor }}"
+
+
+    
 
 
 
