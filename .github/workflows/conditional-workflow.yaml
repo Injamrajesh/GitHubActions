@@ -38,11 +38,11 @@ jobs:
               if: github.ref != 'ref/heads/main'
               run: echo " This step runs  only on the   non-main branch" 
 
-            - name: Run only on Push Event
+            - name: Run only on push event
               if: github.event_name == 'push'
-              run: echo " This step runs  only on the   push event"  
+              run: echo " This step runs  only on the   push events"  
               
-            - name: Run only on work flow dispatch Event
+            - name: Run only on workflow_dispatch event
               if: github.event_name == 'workflow_dispatch'
               run:  |
                 echo "This step runs  only on the   workflow dispatch events" 
