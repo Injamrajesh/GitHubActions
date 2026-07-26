@@ -1,23 +1,30 @@
-name: My First GitHub Action
+name: first-workflow
 
 on:
-  push:
-    branches:
-      - main
+    workflow_dispatch:
+    push:
+        branches:
+            - main
 
 jobs:
-  hello:
-    runs-on: ubuntu-latest
 
-    steps:
-      - name: Print a message
-        run: echo "Hello from GitHub Actions!"
+    test-job:
+        runs-on: ubuntu-latest
 
-      - name: Print current date
-        run: date
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v6
 
-      - name: Show current directory
-        run: pwd
+            - name: Run test script
+              run: |
+                  pwd
+                  cd ~
+                  echo "Running test script..."
+                  # Add your test commands here
+                  echo "Test script completed."
 
-      - name: List files
-        run: ls -la
+            - name: verify test results
+              run: |
+                  echo "Verifying test results..."
+                  # Add your verification commands here
+                  echo "Test results verified."
